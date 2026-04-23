@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f0c29, #28234d, #0f0c29);
+  color: white;
+}
+
+/* CONTENEDOR */
+.container {
+  width: 90%;
+  max-width: 900px;
+  text-align: center;
+  position: relative;
+}
+.container::before {
+  content: "";
+  position: absolute;
+  inset: -150px; /* 🔥 EXPANDE la luz */
+
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(255, 0, 200, 0.35),
+    rgba(0, 100, 255, 0.3),
+    transparent 70%
+  );
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  filter: blur(120px); /* 🔥 MUCHO más difuso */
+
+  z-index: -1;
+}
+.container.active::before {
+  opacity: 1;
+}
+
+/* TITULO */
+h1 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+/* GRID RESPONSIVE */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+/* BOTÓN BASE */
+button {
+  position: relative;
+  z-index: 1;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* BORDE ANIMADO (LA "LLANTA") */
+button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 2px;
+
+  background: linear-gradient(90deg, #ff00cc, #3333ff, #ff00cc);
+  background-size: 200% 200%;
+
+  /* recorte para que solo sea borde */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+
+
+/* TEXTO */
+button span {
+  position: relative;
+  z-index: 10;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* HOVER */
+button:hover::before {
+  opacity: 1;
+  animation: borderMove 2s linear infinite;
+}
+
+button:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* ANIMACIÓN DEL BORDE (GIRO LIMPIO) */
+@keyframes borderMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* TOOLTIP */
+#tooltip {
+  margin-top: 20px;
+  font-size: 1rem;
+  opacity: 0.8;
+  min-height: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+}

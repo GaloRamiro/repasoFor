@@ -1,19 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI Moderna</title>
+    <link rel="stylesheet" href="styles.css" />
     <script src="repaso.js"></script>
-</head>
-<body>
-    <button onclick="mostrar(1)">Ejercicio 1</button>
-    <button onclick="mostrar(2)">Centenas</button>
-    <button onclick="mostrar(3)">Regresivo</button>
-    <button onclick="mostrar(4)">mensaje1</button>
-    <button onclick="mostrar(5)">mensaje2</button>
-    <button onclick="mostrar(6)">mensaje3</button>
-    <button onclick="mostrar(7)">mensaje4</button>
-    <button onclick="mostrar(8)">Tabla del 3</button>
-</body>
+   <script src="animaciones.js" defer></script>
+    <link rel="stylesheet" href="repaso.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Panel de Ejercicios</h1>
+
+      <div class="grid">
+        <button onclick="mostrar(1)" data-desc="Imprime números del 1 al 5">
+           <span>Centenas</span>
+        </button>
+        <button onclick="mostrar(2)" data-desc="Muestra centenas">
+           <span>Centenas</span>
+        </button>
+        <button onclick="mostrar(3)" data-desc="Cuenta regresiva">
+           <span>Regresivo</span>
+        </button>
+        <button onclick="mostrar(4)" data-desc="Mensaje repetido 3 veces">
+           <span>Mensaje 1</span>
+        </button>
+        <button onclick="mostrar(5)" data-desc="Bucle descendente">
+           <span>Mensaje 2</span>
+        </button>
+        <button onclick="mostrar(6)" data-desc="Otro tipo de mensaje">
+           <span>Mensaje 3</span>
+        </button>
+        <button onclick="mostrar(7)" data-desc="Error controlado en bucle">
+           <span>Mensaje 4</span>
+        </button>
+        <button onclick="mostrar(8)" data-desc="Tabla de multiplicar del 3">
+          <span>Tabla del 3</span> 
+        </button>
+      </div>
+
+      <p id="tooltip"></p>
+    </div>
+  </body>
 </html>
