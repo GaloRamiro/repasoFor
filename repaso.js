@@ -46,7 +46,7 @@ function mostrarMensaje1() {
  * usando la condición i <= 12.
  */
 function mostrarMensaje2() {
-  for (let i = 10; i <= 12; i++) {
+  for (let i = 10; i >= 8; i--) {
     console.log("Mensaje Dos " + i);
   }
 }
@@ -68,7 +68,7 @@ function mostrarMensaje3() {
  * Por lo tanto, este bucle NO se ejecuta.
  */
 function mostrarMensaje4() {
-  for (let i = 8; i > 11; i++) {
+  for (let i = 8; i > 5; i--) {
     console.log("Mensaje Cuatro " + i);
   }
 }
